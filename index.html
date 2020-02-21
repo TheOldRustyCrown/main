@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="theme-color" content="rgb(32,32,32)" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no" />
-    <title>Hello World</title>
-    <script src="lib/react.production.min.js"></script>
-    <script src="lib/react-dom.production.min.js"></script>
-    <script src="lib/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel">
+<head>
+<meta charset="UTF-8" />
+<meta name="theme-color" content="rgb(32,32,32)" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no" />
+<title>Hello World</title>
+<script src="lib/react.production.min.js"></script>
+<script src="lib/react-dom.production.min.js"></script>
+<script src="lib/babel.min.js"></script>
+<style>
+body {
+background: rgb(32, 32, 32);
+color: #fff;
+text-align: center;
+padding-top: 64px;
+}
+h1 {
+margin: 0 auto;
+padding: 0
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  let shoot = () => {
+  let roll = Math.round(Math.random()*12+24)%6
+  if (roll===0) return alert('Бум!')
+  else return alert('Осечка...')
+  }
+  
+  ReactDOM.render(
+<h1 onClick={() => shoot()}>Спустить курок</h1>,
+document.getElementById('root')
+  );
 
-      ReactDOM.render(
-        <h1 onClick={() => alert('клик')}>Hell, world!</h1>,
-        document.getElementById('root')
-      );
-
-    </script>
-  </body>
+</script>
+</body>
 </html>
