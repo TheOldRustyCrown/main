@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="theme-color" content="rgb(32,32,32)" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no" />
+<title>Hello World</title>
+<script src="lib/react.production.min.js"></script>
+<script src="lib/react-dom.production.min.js"></script>
+<script src="lib/babel.min.js"></script>
+<style>
+body {
+background: rgb(64,64,64);
+color: #fff;
+text-align: center;
+padding-top: 64px;
+}
+h1 {
+margin: 0 auto;
+padding: 0;
+}
+button {
+padding: 16px;
+font-size:16px;
+}
+img {
+display: block;
+margin: 0 auto;
+padding: 1rem 0;
+width: 200px;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<audio id="shoot" src="shoot.mp3"></audio>
+<audio id="luck" src="luck.mp3"></audio>
+
+<script type="text/babel">
+  var current = "Проверим удачу"
+  let shoot = () => {
+  let roll = Math.round(Math.random()*24+24)%6
+  if (roll===0) {
+  return document.getElementById('shoot').play()
+  } else {
+  return document.getElementById('luck').play()
+  }
+  }
+
+function Example(props) {
+  return (
+    <div>
+      <h1>Спустить курок</h1>
+      <img src="revolver.png"/>
+      <button onClick={() => shoot()}>
+        Нажми на меня
+      </button>
+    </div>
+  );
+}
+
+/*function ExampleWithManyStates() {
+  // Объявим несколько переменных состояния!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('банан');
+  const [todos, setTodos] = useState([{ text: 'Изучить хуки' }]);
+}
+
+function handleOrangeClick() {
+    // Аналогично коду this.setState({ fruit: 'апельсин' })
+    setFruit('апельсин');
+  }*/
+
+ReactDOM.render(
+<Example />,
+document.getElementById('root')
+);
+</script>
+</body>
+</html>
